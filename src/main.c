@@ -10,6 +10,7 @@
  * Copyright 2021, Emmanuel Guadalupe Robles Robles, Universidad Tecnológica de la Mixteca
  */
 
+
 #include <stdio.h>
 #include <limits.h>
 #include <stdlib.h>
