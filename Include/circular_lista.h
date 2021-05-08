@@ -1,14 +1,3 @@
-/*
- * File: circular_lista.h
- * Ubication: Include
- * Author: Emmanuel Guadalupe Robles Robles (rore021226@gs.utm.mx)
- * -----
- * Project name: Reproductor musical
- * -----
- * Modified By: Emmanuel Guadalupe Robles Robles (rore021226@gs.utm.mx>)
- * -----
- * Copyright 2021, Emmanuel Guadalupe Robles Robles, Universidad Tecnológica de la Mixteca
- */
 
 #ifndef CIRCULAR_LISTA_H
 #define CIRCULAR_LISTA_H
@@ -25,7 +14,7 @@ struct node {
 struct dlinked_list {
     Node *head;
 };
-
+//hola
 Dlinked_list* create_dlinked_list();
 Node* create_node(int item);
 void destroy_dlinked_list(Node *dlinked_list);
