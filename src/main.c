@@ -10,7 +10,6 @@
  * Copyright 2021, Emmanuel Guadalupe Robles Robles, Universidad Tecnológica de la Mixteca
  */
 
-
 #include <stdio.h>
 #include <limits.h>
 #include <stdlib.h>
@@ -19,17 +18,18 @@
 int menu_principal();
 int menu_editar();
 int menu_reproducir();
-int case_principal(int);
+int case_principal(int, Dlinked_list *dlinked_list);
 int case_reproducir(int);
-int case_editar(int);
+int case_editar(int, Dlinked_list *);
 
 int main()
 {
+    Dlinked_list *dlinked_list = create_dlinked_list();
     int opcion;
     do
     {
         opcion = menu_principal();
-        case_principal(opcion);
+        case_principal(opcion, dlinked_list);
 
     } while (opcion != 3);
 }
@@ -46,7 +46,7 @@ int menu_principal()
     return option;
 }
 
-int case_principal(int opcion)
+int case_principal(int opcion, Dlinked_list *dlinked_list)
 {
     int bandera_salida, exit;
     switch (opcion)
@@ -55,7 +55,7 @@ int case_principal(int opcion)
         do
         {
             bandera_salida = menu_editar();
-            exit = case_editar(bandera_salida);
+            exit = case_editar(bandera_salida, dlinked_list);
         } while (exit != 4);
 
         break;
@@ -74,6 +74,7 @@ int case_principal(int opcion)
         printf("Reiniciando reproductor...\n");
         break;
     }
+    return 0;
 }
 
 int menu_editar()
@@ -89,15 +90,41 @@ int menu_editar()
     return option;
 }
 
-int case_editar(int opcion)
+int case_editar(int opcion, Dlinked_list *dlinked_list)
 {
+    int item;
+    char autor;
+    char nombre;
+    int anio;
     switch (opcion)
     {
     case 1:
+        printf("Ingresar el elemento a insertar:");
+        scanf("%d", &item);
+        insert(&dlinked_list->head, item, autor, nombre, anio);
         break;
     case 2:
+        printf("Ingrese el nùmero de la canciòn a eliminar: ");
+        scanf("%d", &item);
+        int del_node = delete_node(&dlinked_list->head, item);
+        if (del_node == INT_MIN)
+        {
+            printf("Lista vacía (underflow)...");
+        }
+        else
+        {
+            if (del_node == INT_MAX)
+            {
+                printf("Elemento no fue encontrado...\n");
+            }
+            else
+            {
+                printf("Elemento eliminado correctamente...\n");
+            }
+        }
         break;
     case 3:
+        display(dlinked_list);
         break;
     case 4:
         return 4;
@@ -106,6 +133,7 @@ int case_editar(int opcion)
         printf("Reiniciando menú de edición...\n");
         break;
     }
+    return 0;
 }
 
 int menu_reproducir()
@@ -138,6 +166,7 @@ int case_reproducir(int opcion)
         printf("Reiniciando menú de reproducción...\n");
         break;
     }
+    return 0;
 }
 
 /* Dlinked_list *dlinked_list = create_dlinked_list();
