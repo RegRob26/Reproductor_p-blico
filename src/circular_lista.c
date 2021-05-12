@@ -21,7 +21,8 @@ Node *create_node(int item, Autor autor, Name_music cancion, int anio)
     Node *new_node = (Node *)malloc(sizeof(Node));
     new_node->data = item;
     new_node->autor = autor;
-
+    new_node->name_music = cancion;
+    new_node->year = anio;
     new_node->next = new_node;
     // modificacion de Null a new node
     new_node->prev = new_node;
@@ -161,7 +162,7 @@ void display(Dlinked_list *dlinked_list)
         temp = dlinked_list->head;
         do
         {
-            printf("%d ", temp->data);
+            printf("Canción[%d] Autor: %s Nombre canción: %s Año: %d", temp->data, temp->autor, temp->name_music, temp->year);
             temp = temp->next;
         } while (temp != dlinked_list->head);
     }

@@ -112,21 +112,45 @@ int case_editar(int opcion, Dlinked_list *dlinked_list, int *contador)
         printf("Ingrese el nombre del autor: ");
         fflush(stdin);
         getchar();
-        fgets(autor, 100, stdin);
+        // fgets(autor, 100, stdin);
+        gets(autor);
+        strcpy(autor2, autor);
 
         printf("Ingrese el nombre de la canción: ");
         fflush(stdin);
-        fgets(cancion, 100, stdin);
+        // fgets(cancion, 100, stdin);
+        gets(cancion);
+        strcpy(cancion2, cancion);
 
         printf("Ingrese el año de la canción: ");
+        fflush(stdin);
         scanf("%d", &anio);
 
         insert(&dlinked_list->head, item, autor2, cancion2, anio);
         (*contador)++;
         break;
     case 2:
+        printf("Ingrese el nùmero de la canciòn a eliminar: ");
+        scanf("%d", &item);
+        int del_node = delete_node(&dlinked_list->head, item);
+        if (del_node == INT_MIN)
+        {
+            printf("Lista vacía (underflow)...");
+        }
+        else
+        {
+            if (del_node == INT_MAX)
+            {
+                printf("Elemento no fue encontrado...\n");
+            }
+            else
+            {
+                printf("Elemento eliminado correctamente...\n");
+            }
+        }
         break;
-    case 3:display(dlinked_list);
+    case 3:
+        display(dlinked_list);
         break;
     case 4:
         return 4;
