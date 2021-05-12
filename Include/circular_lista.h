@@ -6,8 +6,8 @@ typedef struct node Node;
 
 typedef struct dlinked_list Dlinked_list;
 
-typedef char Autor;
-typedef char Name_music;
+typedef char* Autor;
+typedef char* Name_music;
 
 struct node
 {
