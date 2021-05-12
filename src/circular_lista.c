@@ -16,11 +16,11 @@ Dlinked_list *create_dlinked_list()
 /**
  * Crear un nodo para ser agregado a la lista
  * */
-Node *create_node(int item, char autor[100], char cancion[100], int anio)
+Node *create_node(int item, Autor autor, Name_music cancion, int anio)
 {
     Node *new_node = (Node *)malloc(sizeof(Node));
     new_node->data = item;
-    // new_node->autor = autor;
+    new_node->autor = autor;
 
     new_node->next = new_node;
     // modificacion de Null a new node
@@ -28,7 +28,7 @@ Node *create_node(int item, char autor[100], char cancion[100], int anio)
     return new_node;
 }
 
-void insert(Node **head, int item, char autor[100], char cancion[100], int anio)
+void insert(Node **head, int item, Autor autor, Name_music cancion, int anio)
 {
     Node *new_node = create_node(item, autor, cancion, anio);
     Node *aux = *head;
@@ -165,4 +165,9 @@ void display(Dlinked_list *dlinked_list)
             temp = temp->next;
         } while (temp != dlinked_list->head);
     }
+}
+
+void reproducir(Dlinked_list *dlinked_list){
+    
+    printf("Canción: %s", dlinked_list->head->name_music);
 }

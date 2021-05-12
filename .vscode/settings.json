@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "stdio.h": "c",
-        "circular_lista.h": "c",
-        "limits.h": "c"
-    }
-}
